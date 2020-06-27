@@ -17,28 +17,26 @@ import br.com.presentes.services.PresentesService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-
 @Api("API REST Presentes")
 @RestController
 @RequestMapping("api/presentes")
 public class PresentesController {
-	
+
 	@Autowired
 	PresentesService presentesService;
-	
+
 	@ApiOperation(value = "Busca todos os presentes")
 	@GetMapping("/")
-	public ResponseEntity<List<PresenteModel>> getAllPresentes(){
-		List<PresenteModel> presentesModel = presentesService.findAllPresentes();
-		
-		presentesModel.forEach(System.out::println);
-		return ResponseEntity.status(HttpStatus.OK).body(presentesModel);
+	public ResponseEntity<List<PresenteModel>> getAllPresentes() {
+
+		return ResponseEntity.status(HttpStatus.OK).body(presentesService.findAllPresentes());
 	}
-	
+
 	@ApiOperation(value = "Cadastrar um presente.")
 	@PostMapping("/")
-	public ResponseEntity<PresenteModel> createPlanet(@RequestBody Presente presente){
-		//return ResponseEntity.status(HttpStatus.CREATED).body(presentesService.savePresente(presente));
+	public ResponseEntity<PresenteModel> createPlanet(@RequestBody Presente presente) {
+		// return
+		// ResponseEntity.status(HttpStatus.CREATED).body(presentesService.savePresente(presente));
 		return null;
 	}
 

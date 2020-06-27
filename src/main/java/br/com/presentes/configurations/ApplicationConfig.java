@@ -12,7 +12,7 @@ public class ApplicationConfig {
 	public ModelMapper modelMapper() {
 		ModelMapper modelMapper = new ModelMapper();
 
-		modelMapper.getConfiguration().setFieldMatchingEnabled(true).setFieldAccessLevel(AccessLevel.PRIVATE);
+		 modelMapper.getConfiguration().setFieldMatchingEnabled(true).setFieldAccessLevel(AccessLevel.PRIVATE);
 
 		return modelMapper;
 	}

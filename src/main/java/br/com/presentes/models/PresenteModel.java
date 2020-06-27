@@ -3,14 +3,14 @@ package br.com.presentes.models;
 import org.springframework.hateoas.RepresentationModel;
 
 
-public class PresenteModel extends RepresentationModel<PresenteModel>{
-	
+public class PresenteModel extends RepresentationModel<PresenteModel> {
+
 	private String id;
-		
+
 	private String name;
-	
+
 	private String categoria;
-	
+
 	private Double preco;
 
 	public PresenteModel(String id, String name, String categoria, Double preco) {
@@ -20,7 +20,7 @@ public class PresenteModel extends RepresentationModel<PresenteModel>{
 		this.categoria = categoria;
 		this.preco = preco;
 	}
-	
+
 	public PresenteModel() {
 
 	}
@@ -51,6 +51,11 @@ public class PresenteModel extends RepresentationModel<PresenteModel>{
 
 	public String getId() {
 		return id;
+	}
+
+	@Override
+	public String toString() {
+		return "PresenteModel [id=" + id + ", name=" + name + ", categoria=" + categoria + ", preco=" + preco + "]";
 	}
 
 	@Override
@@ -95,10 +100,4 @@ public class PresenteModel extends RepresentationModel<PresenteModel>{
 			return false;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-		return "PresenteModel [id=" + id + ", name=" + name + ", categoria=" + categoria + ", preco=" + preco + "]";
-	}
-	
 }
