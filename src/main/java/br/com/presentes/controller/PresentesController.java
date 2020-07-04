@@ -14,10 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.presentes.models.Presente;
 import br.com.presentes.models.PresenteModel;
 import br.com.presentes.services.PresentesService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 
-@Api("API REST Presentes")
+//@Api("API REST Presentes")
 @RestController
 @RequestMapping("api/presentes")
 public class PresentesController {
@@ -25,14 +23,14 @@ public class PresentesController {
 	@Autowired
 	PresentesService presentesService;
 
-	@ApiOperation(value = "Busca todos os presentes")
+//	@ApiOperation(value = "Busca todos os presentes")
 	@GetMapping("/")
 	public ResponseEntity<List<PresenteModel>> getAllPresentes() {
 
 		return ResponseEntity.status(HttpStatus.OK).body(presentesService.findAllPresentes());
 	}
 
-	@ApiOperation(value = "Cadastrar um presente.")
+//	@ApiOperation(value = "Cadastrar um presente.")
 	@PostMapping("/")
 	public ResponseEntity<PresenteModel> createPlanet(@RequestBody Presente presente) {
 		// return
