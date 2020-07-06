@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -34,6 +35,16 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
 	public List<Usuarios> findAll() {
 		return userRepository.findAll();
+	}
+	
+
+
+	@Override
+	public User save(Usuarios user) {
+		if(user != null) {
+			userRepository.save(user);
+		}
+		
 	}
 
 	

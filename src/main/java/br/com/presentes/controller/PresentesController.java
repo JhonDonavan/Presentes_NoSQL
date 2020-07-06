@@ -17,14 +17,14 @@ import br.com.presentes.services.PresentesService;
 
 //@Api("API REST Presentes")
 @RestController
-@RequestMapping("api/presentes")
+@RequestMapping("/api")
 public class PresentesController {
 
 	@Autowired
 	PresentesService presentesService;
 
 //	@ApiOperation(value = "Busca todos os presentes")
-	@GetMapping("/")
+	@GetMapping("/presentes")
 	public ResponseEntity<List<PresenteModel>> getAllPresentes() {
 
 		return ResponseEntity.status(HttpStatus.OK).body(presentesService.findAllPresentes());

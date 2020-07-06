@@ -26,8 +26,8 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/user", method = RequestMethod.POST)
-	public User create(@RequestBody User user) {
-		//return userService.save(user);
+	public User create(@RequestBody Usuarios user) {
+		return userService.save(user);
 		return null;
 	}
 
