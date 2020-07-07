@@ -2,7 +2,6 @@ package br.com.presentes.services;
 
 import java.util.List;
 
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import br.com.presentes.models.Usuarios;
@@ -15,5 +14,5 @@ public interface UserService {
 	
 	public List<Usuarios> findAll();
 
-	public User save(Usuario user);
+	public Usuarios save(Usuarios user);
 }

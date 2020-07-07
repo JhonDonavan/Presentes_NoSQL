@@ -11,18 +11,22 @@ public class Usuarios {
 	
 	private String username;
 	
-	@JsonIgnore
+	//@JsonIgnore
 	private String password;
+	
+	//@JsonIgnore
+	private String passwordVerification;
 	
 	private Double salary;
 	
 	private Integer age;
 
-	public Usuarios(String id, String userName, String password, Double salary, Integer age) {
+	public Usuarios(String id, String userName, String password, String passwordVerification, Double salary, Integer age) {
 		super();
 		this.id = id;
 		this.username = userName;
 		this.password = password;
+		this.passwordVerification = passwordVerification;
 		this.salary = salary;
 		this.age = age;
 	}
@@ -61,6 +65,14 @@ public class Usuarios {
 		this.age = age;
 	}
 
+	public String getPasswordVerification() {
+		return passwordVerification;
+	}
+
+	public void setPasswordVerification(String passwordVerification) {
+		this.passwordVerification = passwordVerification;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -72,6 +84,7 @@ public class Usuarios {
 		result = prime * result + ((age == null) ? 0 : age.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((passwordVerification == null) ? 0 : passwordVerification.hashCode());
 		result = prime * result + ((salary == null) ? 0 : salary.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
@@ -101,6 +114,11 @@ public class Usuarios {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
+		if (passwordVerification == null) {
+			if (other.passwordVerification != null)
+				return false;
+		} else if (!passwordVerification.equals(other.passwordVerification))
+			return false;
 		if (salary == null) {
 			if (other.salary != null)
 				return false;
@@ -116,8 +134,8 @@ public class Usuarios {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", userName=" + username + ", password=" + password + ", salary=" + salary + ", age="
-				+ age + "]";
+		return "Usuarios [id=" + id + ", username=" + username + ", password=" + password + ", passwordVerification="
+				+ passwordVerification + ", salary=" + salary + ", age=" + age + "]";
 	}
 	
 }

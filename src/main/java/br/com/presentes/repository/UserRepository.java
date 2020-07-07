@@ -8,4 +8,6 @@ public interface UserRepository extends MongoRepository<Usuarios, String> {
 
 	Usuarios findByUsername(String userId);
 
+	//void save(User user);
+
 }
