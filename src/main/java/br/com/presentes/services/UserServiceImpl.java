@@ -8,8 +8,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import br.com.presentes.exceptions.differentPasswordsException;
 import br.com.presentes.models.Usuarios;
 import br.com.presentes.repository.UserRepository;
 
@@ -17,8 +19,8 @@ import br.com.presentes.repository.UserRepository;
 public class UserServiceImpl implements UserDetailsService, UserService {
 
 	@Autowired
-	private UserRepository userRepository;
-
+	UserRepository userRepository;
+		
 	public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
 		Usuarios user = userRepository.findByUsername(userId);
 		if (user == null) {
@@ -39,7 +41,21 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
 	@Override
 	public Usuarios save(Usuarios user) {
+			
+		if(!user.getPassword().toString().equals(user.getPasswordVerification().toString())) {
+			throw new differentPasswordsException(user.getUserName().toString());
+		}
+				
+		user.setPassword(encriptor(user.getPassword()));
+		
 		return userRepository.save(user);
+	}
+		
+	public static String encriptor(String password) {
+		
+		BCryptPasswordEncoder bc = new BCryptPasswordEncoder();
+		
+		return bc.encode(password);
 	}
 
 	

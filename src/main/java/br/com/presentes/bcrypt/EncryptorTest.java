@@ -1,8 +1,8 @@
-package br.com.presentes.BCrypt;
+package br.com.presentes.bcrypt;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-public class Encryptor {
+public class EncryptorTest {
 
 	public static void main(String[] args) {
 		
