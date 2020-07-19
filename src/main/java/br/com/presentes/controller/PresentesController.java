@@ -22,20 +22,19 @@ public class PresentesController {
 
 	@Autowired
 	PresentesService presentesService;
+	
+	//Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-//	@ApiOperation(value = "Busca todos os presentes")
+	//@ApiOperation(value = "Busca todos os presentes")
 	@GetMapping("/presentes")
 	public ResponseEntity<List<PresenteModel>> getAllPresentes() {
-
 		return ResponseEntity.status(HttpStatus.OK).body(presentesService.findAllPresentes());
 	}
 
-//	@ApiOperation(value = "Cadastrar um presente.")
-	@PostMapping("/")
-	public ResponseEntity<PresenteModel> createPlanet(@RequestBody Presente presente) {
-		// return
-		// ResponseEntity.status(HttpStatus.CREATED).body(presentesService.savePresente(presente));
-		return null;
+	//@ApiOperation(value = "Cadastrar um presente.")
+	@PostMapping("/presentes")
+	public ResponseEntity<PresenteModel> createPresentes(@RequestBody Presente presente) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(presentesService.savePresente(presente));
 	}
 
 }

@@ -9,6 +9,6 @@ public interface PresentesService {
 
 	List<PresenteModel> findAllPresentes();
 	
-	PresenteModel savePlanet(Presente presente);
+	PresenteModel savePresente(Presente presente);
 	
 }

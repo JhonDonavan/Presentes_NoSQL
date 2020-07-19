@@ -1,8 +1,8 @@
 package br.com.presentes.models;
 
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "usuarios")
 public class Usuarios {
@@ -20,15 +20,18 @@ public class Usuarios {
 	private Double salary;
 	
 	private Integer age;
+	
+	private List<Presente> presentes;
 
-	public Usuarios(String id, String userName, String password, String passwordVerification, Double salary, Integer age) {
+	public Usuarios(String id, String username, String password, String passwordVerification, Double salary, Integer age, List<Presente> presentes) {
 		super();
 		this.id = id;
-		this.username = userName;
+		this.username = username;
 		this.password = password;
 		this.passwordVerification = passwordVerification;
 		this.salary = salary;
 		this.age = age;
+		this.presentes = presentes;
 	}
 	
 	public Usuarios() {	}
@@ -76,6 +79,14 @@ public class Usuarios {
 	public String getId() {
 		return id;
 	}
+	
+	public List<Presente> getPresentes() {
+		return presentes;
+	}
+
+	public void setPresentes(List<Presente> presentes) {
+		this.presentes = presentes;
+	}
 
 	@Override
 	public int hashCode() {
@@ -85,6 +96,7 @@ public class Usuarios {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((passwordVerification == null) ? 0 : passwordVerification.hashCode());
+		result = prime * result + ((presentes == null) ? 0 : presentes.hashCode());
 		result = prime * result + ((salary == null) ? 0 : salary.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
@@ -119,6 +131,11 @@ public class Usuarios {
 				return false;
 		} else if (!passwordVerification.equals(other.passwordVerification))
 			return false;
+		if (presentes == null) {
+			if (other.presentes != null)
+				return false;
+		} else if (!presentes.equals(other.presentes))
+			return false;
 		if (salary == null) {
 			if (other.salary != null)
 				return false;
@@ -135,7 +152,7 @@ public class Usuarios {
 	@Override
 	public String toString() {
 		return "Usuarios [id=" + id + ", username=" + username + ", password=" + password + ", passwordVerification="
-				+ passwordVerification + ", salary=" + salary + ", age=" + age + "]";
+				+ passwordVerification + ", salary=" + salary + ", age=" + age + ", presentes=" + presentes + "]";
 	}
-	
+
 }

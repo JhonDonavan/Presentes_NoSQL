@@ -23,6 +23,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfiguration{
 
+	@SuppressWarnings("deprecation")
 	@Bean
 	public LinkDiscoverers discoverers() {
 		List<LinkDiscoverer> plugins = new ArrayList<>();

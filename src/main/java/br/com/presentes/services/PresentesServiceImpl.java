@@ -23,17 +23,13 @@ public class PresentesServiceImpl implements PresentesService {
 	public List<PresenteModel> findAllPresentes() {
 		List<Presente> allPresentes = presenteRepository.findAll();
 		System.out.println(allPresentes.listIterator());
-		//return planetAssembler.toHateoasPlanetModelCollection(allPlanets);
 		return presenteModelAssembler.toHateoasPresenteModelCollections(allPresentes);
 	}
 
+
 	@Override
-	public PresenteModel savePlanet(Presente presente) {
-		// TODO Auto-generated method stub
-		return null;
+	public PresenteModel savePresente(Presente presente) {
+		presenteRepository.save(presente);
+		return presenteModelAssembler.toHateoasPresenteModel(presente);
 	}
-	
-
-
-	
 }

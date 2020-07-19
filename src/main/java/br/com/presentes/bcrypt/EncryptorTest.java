@@ -8,6 +8,7 @@ public class EncryptorTest {
 		
 		BCryptPasswordEncoder bc = new BCryptPasswordEncoder();
 		
+		@SuppressWarnings("unused")
 		String senha = "teste123";
 		
 		String senha2 = "1";
