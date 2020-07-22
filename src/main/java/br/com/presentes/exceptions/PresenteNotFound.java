@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Getter @Setter @RequiredArgsConstructor
-public class PresenteNotFound extends NotFoundException {
+public class PresenteNotFound extends RuntimeException {
 
 	/**
 	 * 

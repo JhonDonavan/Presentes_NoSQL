@@ -155,4 +155,6 @@ public class Usuarios {
 				+ passwordVerification + ", salary=" + salary + ", age=" + age + ", presentes=" + presentes + "]";
 	}
 
+	
+
 }

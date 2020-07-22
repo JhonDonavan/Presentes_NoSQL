@@ -11,7 +11,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import br.com.presentes.exceptions.UserNotFoundException;
 import br.com.presentes.exceptions.differentPasswordsException;
+import br.com.presentes.models.Presente;
 import br.com.presentes.models.Usuarios;
 import br.com.presentes.repository.UserRepository;
 
@@ -52,11 +54,25 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 	}
 		
 	public static String encriptor(String password) {
-		
 		BCryptPasswordEncoder bc = new BCryptPasswordEncoder();
-		
 		return bc.encode(password);
 	}
-
 	
+	
+	
+	//TODO Criar dois controller user -- 1 para tratar login, cadastro perfil e outro para tratar da manutenção de presentes do usuario
+	
+
+	@Override
+	public Usuarios UpdateUser(Long id, Usuarios user) {
+		
+		//TODO alterar para ID para STRING? avaliar!!
+		Usuarios usuario = userRepository.findById(id.toString()).orElseThrow(() -> new UserNotFoundException(id.toString()));
+	
+		if(usuario.getPresentes() == null) { usuario.setPresentes(Arrays.asList()); }
+		
+		Usuarios saveUsuario = userRepository.save(usuario);
+		//todo incluir hateoas
+		return saveUsuario;
+	}
 }

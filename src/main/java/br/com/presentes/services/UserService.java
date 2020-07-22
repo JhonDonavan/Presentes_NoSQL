@@ -15,4 +15,6 @@ public interface UserService {
 	public List<Usuarios> findAll();
 
 	public Usuarios save(Usuarios user);
+	
+	public Usuarios UpdateUser(Long id,  Usuarios presentes);
 }

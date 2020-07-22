@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.presentes.models.Presente;
 import br.com.presentes.models.Usuarios;
 import br.com.presentes.services.UserService;
 	
@@ -36,6 +37,10 @@ public class UserController {
 		//userService.delete(id);
 		//return "success";
 		return null;
+	}
+	
+	public ResponseEntity<Usuarios> Update(@PathVariable(value="id") Long id,  @RequestBody Usuarios user){
+		return ResponseEntity.status(HttpStatus.OK).body(userService.UpdateUser(id, user));
 	}
 
 }
